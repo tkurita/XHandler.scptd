@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+	<head>
+		<title>XHandler Reference</title>
+		
+		<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+		<link href="assets/default.css" type="text/css" rel="stylesheet" media="all" />
+        <link href="assets/applescript.css" type="text/css" rel="stylesheet" media="all" />
+		<meta name="keywords" content="XHandler, AppleScript" />
+		<script type="text/javascript" src="assets-helpbook/run_helpscript.js"></script>
+		<script type="text/javascript" src="assets/navibar-jump.js"></script>
+        <link id="helpviewer-handler-helper" href="assets-helpbook/helpviewer-handler-helper.scpt" />
+        <script type="text/javascript" src="assets-helpbook/helpviewer-handler-enable.js"></script>
+        <link href="../" id="HelpBookRoot" />
+	</head>
+
+	<body>
+		<div id="navi-bar">
+			<div class="edit-script-link">
+				<a onclick="return runHelpScriptWithBundleRoot(this)" href="assets-helpbook/editScript.scpt">Edit Script</a>
+			</div>
+			<div class="left-contents">
+			<div class="to-root">
+				<!-- InstanceBeginEditable name="to-root" --><a href="../index.html">XHandler Help</a><!-- InstanceEndEditable -->
+			</div>
+			<select onchange="navibarJump(this)">
+<option value="">
+§
+</option>
+<option value="#Constructor_Method">
+Constructor Method
+</option>
+<option value="#make_with">
+- make_with
+</option>
+<option value="#Instance_Methods_of_a_Handler_Object">
+Instance Methods of a Handler Object
+</option>
+<option value="#do">
+- do
+</option>
+<option value="#call_to">
+- call_to
+</option>
+<option value="#responded_by">
+- responded_by
+</option>
+</select>
+			</div>
+		</div>
+		<!-- InstanceBeginEditable name="prev-next-item" --><div class="prev-next-item"><a href="../01_synopsis/index.html"><span class="navibar-prev">Synopsis</span></a></div><!-- InstanceEndEditable -->
+		<div id="contents">
+		<h1>XHandler Reference</h1>
+<ul>
+<li>Version : 1.4</li>
+<li>Author : Kurita Tetsuro <a href="mailto:scriptfactory@mac.com">scriptfactory@mac.com</a></li>
+<li>Requirements : OS X 10.9 or later</li>
+<li><a href="http://www.script-factory.net/XModules/XHandler/en/index.html">Home page</a> || <a href="http://www.script-factory.net/XModules/XHandler/changelog.html">ChangeLog</a> || <a href="https://github.com/tkurita/XAccessor.scptd">Repository</a> </li>
+</ul>
+<h2 id="Constructor_Method">Constructor Method</h2>
+<h3 id="make_with"><a href="pages/make_with.html">make_with</a></h3>
+<p>ハンドラの名前と引数の数を指定して、XHandler のインスタンスを生成します。</p>
+
+<h2 id="Instance_Methods_of_a_Handler_Object">Instance Methods of a Handler Object</h2>
+<h3 id="do"><a href="pages/do.html">do</a></h3>
+<p>指定されたハンドラをターゲットオブジェクト（引数 target_object に渡されたスクリプトオブジェクト） で実行します。</p>
+
+<h3 id="call_to"><a href="pages/call_to.html">call_to</a></h3>
+<p>指定されたハンドラをターゲットオブジェクト（引数 target_object に渡されたスクリプトオブジェクト） で実行します。</p>
+<p>もし、ターゲットオブジェクトが指定したハンドラを持っていない場合は、ハンドラ successor() の実行を試みます。successor() の返り値が得られれば、その返り値に対して call_to を適用します。この仕組みを利用して、chain of responder や method forwading を行うことができます。</p>
+
+<h3 id="responded_by"><a href="pages/responded_by.html">responded_by</a></h3>
+<p>ターゲットオブジェクトが指定されたハンドラを実行できるか調べます。</p>
+
+		</div>
+		<!-- InstanceBeginEditable name="prev-next-item" --><div class="prev-next-item"><a href="../01_synopsis/index.html"><span class="navibar-prev">Synopsis</span></a></div><!-- InstanceEndEditable -->
+	</body>
+
+</html>

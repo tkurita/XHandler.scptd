@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+  <!-- InstanceBegin template="../../../../../_Templates/helpbook-page.dwt" -->
+
+    <head>
+      <meta name="keywords" content="XHandler, AppleScript, sample" />
+      <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+      <title>Synopsis</title>
+      <!-- #BeginHeadLocked "" -->
+        <link href="assets/helpbook-default.css" type="text/css" rel="stylesheet" media="all" />
+        <link href="assets/helpbook-navibar.css" type="text/css" rel="stylesheet" media="all" />
+        <script type="text/javascript" src="assets/navibar-jump.js"></script>
+      <!-- #EndHeadLocked -->
+      <link href="assets/AppleScript-2016.css" rel="stylesheet" type="text/css" media="all" />
+    </head>
+
+    <body>
+      <!-- InstanceBeginEditable name="navi-bar" --><div id="navi-bar"><span class="navibar-item"><a href="../index.html">XHandler Help</a></span><span class="navibar-item">Synopsis</span><select onchange="navibarJump(this)"><option value="">§</option>
+    <option value="#what">What</option>
+    <option value="#sample">Sample</option></select></div>
+<div class="prev-next-item"><a href="../02_reference/index.html"><span class="navibar-next">XHandler Reference</span></a></div><!-- InstanceEndEditable -->
+      <div id="contents">
+        <!-- InstanceBeginEditable name="Body" -->
+          <h1>XHandler</h1>
+          <h2><a id="what" name="what"></a>What</h2>
+          <csobj csref="../../../_Components/abstruct_ja.html" occur="94" t="Component">
+            <p>XHandler はハンドラ名を文字列で指定してハンドラを実行する為の AppleScript ライブラリです。</p>
+            <p>その他に、次のことができます。</p>
+            <ul>
+              <li>スクリプトオブジェクトがハンドラを実装しているか調べることができます。</li>
+              <li>ハンドラが実装されていなければ、別のスクリプトにハンドラの呼び出しを預けることができます。</li>
+            </ul>
+            <p>実行中にハンドラを柔軟に切り替えることができ、Chain of Responder や method forwarding など、動的な振る舞いの実現に訳にたちます。</p>
+            <p>AppleScript の言語レベルではサポートされていない機能を実現する AppleScript ライブラリです。</p>
+          </csobj>
+          <p>positional parameter を持ったハンドラならどんな物でも実行できます。残念ながら labeled parameter を持ったハンドラは実行できません。</p>
+          
+          <h2><a id="sample" name="sample"></a>Sample</h2>
+          <csobj csref="../../../_Components/sample-code.html" occur="70" t="Component">
+            <div class="sourceCode" style="">
+              <div class="scriptButton" style="float:right;" >
+                <input type="button" value="Open this script : sample" onclick="document.location = this.src" src="applescript://com.apple.scripteditor?action=new&amp;script=use%20XHandler%20:%20script%20%22XHandler%22%0D%0Dscript%20BScript%0D%09on%20say_msg(a_msg)%0D%09%09return%20%22hey%20%22%20%26%20a_msg%0D%09end%20say_msg%0Dend%20script%0D%0Dscript%20AScript%0D%09on%20show_msg(a_msg)%0D%09%09return%20%22hello%20%22%20%26%20a_msg%0D%09end%20show_msg%0D%09%0D%09--%20successor%20object%20to%20foward%20calling%20handlers%20which%20are%20not%20implemented.%0D%09on%20successor()%0D%09%09return%20BScript%0D%09end%20successor%0Dend%20script%0D%0D(*%3D%3D%20Simply%20calling%20handler%20%3D%3D*)%0Dset%20xhandler1%20to%20XHandler%27s%20make_with(%22show_msg%22,%201)%0Dlog%20xhandler1%27s%20do(AScript,%20%22good%20morning%22)%20--%20hello%20good%20morning%0D%0D(*%3D%3D%20Test%20whether%20AScript%20can%20respont%20to%20the%20handler%20%22show_msg%22%20%3D%3D*)%0Dlog%20xhandler1%27s%20responded_by(AScript)%20--%20true%0D%0D(*%3D%3D%20If%20target%20object%20can%27t%20resond%20to%20the%20handler,%20try%20to%20call%20handler%20in%20a%20successr%20object%20.%20%3D%3D*)%0Dset%20xhandler2%20to%20XHandler%27s%20make_with(%22say_msg%22,%201)%0Dlog%20xhandler2%27s%20call_to(AScript,%20%22good%20evening%22)%20--%20%22hey%20good%20evening%22%0D" /></div>
+              <div>
+                <span class="langKeyword">use</span> <span class="userDefine">XHandler</span><span class="normal"> : </span><span class="className">script</span><span class="normal"> &quot;XHandler&quot;</span></div>
+              <br />
+              <div>
+                <span class="langKeyword">script</span> <span class="userDefine">BScript</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">on</span> <span class="userDefine">say_msg</span><span class="normal">(</span><span class="userDefine">a_msg</span><span class="normal">)</span></div>
+              <div style="text-indent:8ex;">
+                <span class="langKeyword">return</span><span class="normal"> &quot;hey &quot; &amp; </span><span class="userDefine">a_msg</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">end</span> <span class="userDefine">say_msg</span></div>
+              <div>
+                <span class="langKeyword">end</span> <span class="langKeyword">script</span></div>
+              <br />
+              <div>
+                <span class="langKeyword">script</span> <span class="userDefine">AScript</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">on</span> <span class="userDefine">show_msg</span><span class="normal">(</span><span class="userDefine">a_msg</span><span class="normal">)</span></div>
+              <div style="text-indent:8ex;">
+                <span class="langKeyword">return</span><span class="normal"> &quot;hello &quot; &amp; </span><span class="userDefine">a_msg</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">end</span> <span class="userDefine">show_msg</span></div>
+              <br />
+              <div style="text-indent:4ex;">
+                <span class="comment">-- successor object to foward calling handlers which are not implemented.</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">on</span> <span class="userDefine">successor</span><span class="normal">()</span></div>
+              <div style="text-indent:8ex;">
+                <span class="langKeyword">return</span> <span class="userDefine">BScript</span></div>
+              <div style="text-indent:4ex;">
+                <span class="langKeyword">end</span> <span class="userDefine">successor</span></div>
+              <div>
+                <span class="langKeyword">end</span> <span class="langKeyword">script</span></div>
+              <br />
+              <div>
+                <span class="comment">(*== Simply calling handler ==*)</span></div>
+              <div>
+                <span class="langKeyword">set</span> <span class="userDefine">xhandler1</span> <span class="langKeyword">to</span> <span class="userDefine">XHandler's</span> <span class="userDefine">make_with</span><span class="normal">(&quot;show_msg&quot;, 1)</span></div>
+              <div>
+                <span class="commandName">log</span> <span class="userDefine">xhandler1's</span> <span class="userDefine">do</span><span class="normal">(</span><span class="userDefine">AScript</span><span class="normal">, &quot;good morning&quot;) </span><span class="comment">-- hello good morning</span></div>
+              <br />
+              <div>
+                <span class="comment">(*== Test whether AScript can respont to the handler &quot;show_msg&quot; ==*)</span></div>
+              <div>
+                <span class="commandName">log</span> <span class="userDefine">xhandler1's</span> <span class="userDefine">responded_by</span><span class="normal">(</span><span class="userDefine">AScript</span><span class="normal">) </span><span class="comment">-- true</span></div>
+              <br />
+              <div>
+                <span class="comment">(*== If target object can't resond to the handler, try to call handler in a successr object . ==*)</span></div>
+              <div>
+                <span class="langKeyword">set</span> <span class="userDefine">xhandler2</span> <span class="langKeyword">to</span> <span class="userDefine">XHandler's</span> <span class="userDefine">make_with</span><span class="normal">(&quot;say_msg&quot;, 1)</span></div>
+              <div>
+                <span class="commandName">log</span> <span class="userDefine">xhandler2's</span> <span class="userDefine">call_to</span><span class="normal">(</span><span class="userDefine">AScript</span><span class="normal">, &quot;good evening&quot;) </span><span class="comment">-- &quot;hey good evening&quot;</span></div>
+            </div>
+          </csobj><!-- InstanceEndEditable --></div>
+      <!-- InstanceBeginEditable name="prev-next-item" --><div class="prev-next-item"><a href="../02_reference/index.html"><span class="navibar-next">XHandler Reference</span></a></div><!-- InstanceEndEditable -->
+      <div class="footer">
+        <p>This page was last built on <csobj format="MedDate" h="10" region="0" t="DateTime" w="69">Wed, Feb 5, 2020</csobj> ; <csobj format="LongTime" h="10" region="0" t="DateTime" w="45">7:22:58 PM</csobj> . Thanks for checking it out!</p>
+      </div>
+    </body>
+
+  <!-- InstanceEnd -->
+
+</html>
